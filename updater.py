@@ -3,6 +3,8 @@ import os, time, distro
 update_freq = 604800
 log_message = ""
 
+os.system("export DEBIAN_FRONTEND=noninteractive") ## Suppresses the urgue to take up the screen and mess up my program
+
 try :
     log_message += str(time.strftime("%Y-%m-%d %H:%M:%S %Z", time.localtime()) + ": Running `sudo apt update`.\n") 
     os.system("sudo apt update")
