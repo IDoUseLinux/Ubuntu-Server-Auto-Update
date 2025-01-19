@@ -1,23 +1,21 @@
 import os, time, distro
 
 update_freq = 604800
-
-if distro != "Ubuntu" :  ## If not Ubuntu, this could technically work for any Debian based system, but I just hardcoded Ubuntu because it is the distro I use for my servers
-    exit()
+log_message = ""
 
 try :
-    log_message = time.strftime("%Y-%m-%d %H:%M:%S %Z", time.localtime() + ": Running `sudo apt update`.\n") 
+    log_message += str(time.strftime("%Y-%m-%d %H:%M:%S %Z", time.localtime()) + ": Running `sudo apt update`.\n") 
     os.system("sudo apt update")
-    log_message += time.strftime("%Y-%m-%d %H:%M:%S %Z", time.localtime() + ": Ran `sudo apt update` successfully.\n") 
+    log_message += str(time.strftime("%Y-%m-%d %H:%M:%S %Z", time.localtime()) + ": Ran `sudo apt update` successfully.\n") 
 except Exception as error :
-    log_message += time.strftime("%Y-%m-%d %H:%M:%S %Z", time.localtime() + f": Ran `sudo apt update` with error message {error}.\n") 
+    log_message += str(time.strftime("%Y-%m-%d %H:%M:%S %Z", time.localtime()) + f": Ran `sudo apt update` with error message {error}.\n") 
 
 try : 
-    log_message += time.strftime("%Y-%m-%d %H:%M:%S %Z", time.localtime() + ": Running `sudo apt upgrade -y`.\n") 
+    log_message += str(time.strftime("%Y-%m-%d %H:%M:%S %Z", time.localtime()) + ": Running `sudo apt upgrade -y`.\n") 
     os.system("sudo apt upgrade -y")
-    log_message += time.strftime("%Y-%m-%d %H:%M:%S %Z", time.localtime() + ": Ran `sudo apt upgrade -y` successfully.\n") 
+    log_message += str(time.strftime("%Y-%m-%d %H:%M:%S %Z", time.localtime()) + ": Ran `sudo apt upgrade -y` successfully.\n") 
 except Exception as error : 
-    log_message += time.strftime("%Y-%m-%d %H:%M:%S %Z", time.localtime() + f": Ran `sudo apt upgrade -y` with error message {error}.\n") 
+    log_message += str(time.strftime("%Y-%m-%d %H:%M:%S %Z", time.localtime()) + f": Ran `sudo apt upgrade -y` with error message {error}.\n") 
 
 try :
     with open("logs.txt", 'a') as logfile :
