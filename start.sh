@@ -1,0 +1,1 @@
+sudo screen python updater.py
