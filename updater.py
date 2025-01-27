@@ -1,4 +1,4 @@
-import os, time, distro
+import os, time
 
 update_freq = 604800
 
